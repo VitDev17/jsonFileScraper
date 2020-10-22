@@ -1,0 +1,29 @@
+{
+  "name": "jsonfilescraper",
+  "version": "1.0.0",
+  "description": "Json file scraper with CRUD",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitDev17/jsonFileScraper.git"
+  },
+  "keywords": [
+    "JSON",
+    "Node.js",
+    "Express",
+    "FileRead"
+  ],
+  "author": "Vittorio Sabbatini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VitDev17/jsonFileScraper/issues"
+  },
+  "homepage": "https://github.com/VitDev17/jsonFileScraper#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
