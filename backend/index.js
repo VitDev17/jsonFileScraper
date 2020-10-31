@@ -1,8 +1,8 @@
 let express = require('express');
 let config = require('./config');
-
+let cors = require('cors');
 app = express();
-app.use(express.bodyParser());
+app.use(cors());
 
 let fs = require('fs'); //file reader
 

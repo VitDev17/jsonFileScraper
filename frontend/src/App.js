@@ -1,17 +1,22 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
 import Form from 'react-bootstrap/Form'
 
 function App() {
-  const [filesList, setFilesList] = useState([])
+  const [filesList, setFilesList] = useState([]);
+  const [selectedFile, setSelectedFile] = useState([]);
+
+  useEffect(() => {
+    getFileList();
+  }, [])
 
   const getFileList = async() => {
-    await fetch('http://localhost:3000/file-list')
-      .then(response => response.json())
+    await axios.get('http://localhost:5000/files-list')
       .then(data => {
-        console.log("PROVA PROVA",data);
-        setFilesList(data)
+        console.log("PROVA PROVA",data.data.content);
+        setFilesList(data.data.content)
       });
   }
 
@@ -31,11 +36,18 @@ function App() {
               <Form.Label>Seleziona il file</Form.Label>
               <Form.Control as="select" size="sm" custom>
                 {filesList.map((value,index)=>(
-                  <option key={index}>{value}</option>
+                  <option onClick={(value)=>setSelectedFile(value)} key={index}>{value}</option>
                 ))}
               </Form.Control>
             </Form.Group>
           </Form>
+          {selectedFile && 
+            <div>
+              {Object.entries(selectedFile).map(()=>{
+                <p>CIAO</p>
+              })}
+            </div>
+            }
       </div>
     </div>
   );
