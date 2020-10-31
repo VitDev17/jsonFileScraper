@@ -10,6 +10,7 @@ function App() {
     await fetch('http://localhost:3000/file-list')
       .then(response => response.json())
       .then(data => {
+        console.log("PROVA PROVA",data);
         setFilesList(data)
       });
   }

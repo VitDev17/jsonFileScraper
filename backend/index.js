@@ -1,8 +1,10 @@
 let express = require('express');
 let config = require('./config');
-let app = express();
+
+app = express();
+app.use(express.bodyParser());
+
 let fs = require('fs'); //file reader
-const { response } = require('express');
 
 //Ricevere la lista dei file conteuti nella cartella indicata
 app.get('/files-list', function (req, res) {
@@ -31,15 +33,16 @@ app.get('/files-list', function (req, res) {
 
 //Leggere file passato in req
 app.post('/read-file', function (req, res) {
-  res.send('Richiesta dal frontend: ',req);
   let filePath = './JSONfiles/';
-  let filename = req.body.filename;
+  let filename = req;
+  console.log(req.body)
+
   fs.readFile(filePath+filename, function (error, content) {
     if(error){
       res.status(500).send({
         status: 'error',
         message: 'Errore nella lettura del file',
-        error
+        req
       }).end()
     }else{
       //let data = JSON.parse(content).collection;
