@@ -1,9 +1,7 @@
 ## jsonFileScraper
-jsonFileScraper that treats JSON files as tree views
-
-cd into the folder and then <b>npm install</b> o <b>yarn</b>
-To run the project type <b>npm start</b>
-# lanciare il progetto:
+jsonFileScraper permette di posizionare dei file cyjs in backend/JSONfiles e leggerli sulla base dei vari collegamenti</br>
+visibile anche nel software Cytoscape
+# Passi per testare il progetto:
 Dopo aver clonato il progetto.
 - cd jsonfilescraper
 - <b>yarn</b> o se si utilizza npm <b>npm install</b>
