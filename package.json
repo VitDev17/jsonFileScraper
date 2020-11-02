@@ -1,0 +1,16 @@
+{
+  "name": "jsonfilescraper",
+  "version": "1.0.0",
+  "description": "jsonFileScraper that treats JSON files as tree views",
+  "main": "index.js",
+  "scripts": {
+    "startFrontend": "cd frontend && npm start",
+    "startBackend": "cd backend && npm start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1"
+  }
+}

@@ -1,7 +1,11 @@
 let express = require('express');
 let config = require('./config');
 let cors = require('cors');
-app = express();
+const bodyParser = require('body-parser');
+
+const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(cors());
 
 let fs = require('fs'); //file reader
@@ -10,7 +14,6 @@ let fs = require('fs'); //file reader
 app.get('/files-list', function (req, res) {
   let filePath = './JSONfiles/'
   fs.readdir(filePath, (error,content) => {
-    console.log('Richiesta dal frontend: ',req);
     if(error){
       res.status(500).send({
         status: 'error',
@@ -32,25 +35,24 @@ app.get('/files-list', function (req, res) {
 });
 
 //Leggere file passato in req
-app.post('/read-file', function (req, res) {
+app.post('/read-file', (req, res) => {
   let filePath = './JSONfiles/';
-  let filename = req;
-  console.log(req.body)
-
+  let filename = req.body.filename;
   fs.readFile(filePath+filename, function (error, content) {
     if(error){
       res.status(500).send({
         status: 'error',
         message: 'Errore nella lettura del file',
-        req
+        error
       }).end()
     }else{
       //let data = JSON.parse(content).collection;
-      //console.log(data);
+      console.log("PROVA",content);
+      let data = JSON.parse(content);
       res.status(200).send({
           status: 'success',
           message: 'Lettura file',
-          content
+          data
       }).end()
     }
   })
